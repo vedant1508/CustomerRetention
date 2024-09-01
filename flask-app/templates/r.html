@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Retention Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .section-title {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .highlight {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Customer Retention Analysis</h1>
+    <table>
+        <tr>
+            <th>Customer Status</th>
+            <td>{{ left_status }}</td>
+        </tr>
+        <tr>
+            <th>Probability of Leaving</th>
+            <td>{{ left_prob }}</td>
+        </tr>
+        <tr>
+            <th>Customer Segment</th>
+            <td>{{ customer_segment }}</td>
+        </tr>
+    </table>
+    
+    <div class="section-title">Customer Profile</div>
+    <table>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+        {% for key, value in customer_profile.items() %}
+        <tr>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <div class="section-title">Retention Recommendation</div>
+    <div>
+        {{ recommendation|safe }}
+    </div>
+    
+    <a href="{{ url_for('index') }}">Go back</a>
+</body>
+</html>
